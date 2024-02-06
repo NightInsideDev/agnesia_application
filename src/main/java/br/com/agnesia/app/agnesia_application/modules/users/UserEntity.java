@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
@@ -16,8 +17,8 @@ public class UserEntity {
     private String uploadData;
     private String name;
 
-
-    @Pattern(regexp = "^(?!\\s*$).+", message = "[username] field do not accept spaces")
+    @NotBlank()
+    @Pattern(regexp = "\\S+", message = "[username] field do not accept spaces")
     private String username;
     @Email(message = "[email] field only accetps valid emails")
     private String email;
