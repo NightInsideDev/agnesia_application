@@ -16,6 +16,7 @@ public class UserEntity {
     private String uploadData;
     private String name;
 
+
     @Pattern(regexp = "^(?!\\s*$).+", message = "[username] field do not accept spaces")
     private String username;
     @Email(message = "[email] field only accetps valid emails")
