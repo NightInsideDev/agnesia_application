@@ -2,8 +2,9 @@ package br.com.agnesia.app.agnesia_application.modules.users.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import br.com.agnesia.app.agnesia_application.modules.users.UserEntity;
+import br.com.agnesia.app.agnesia_application.modules.users.UserRepository;
 import jakarta.validation.Valid;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
-    @PostMapping("/")
-    public void create(@Valid @RequestBody UserEntity userEntity) {
+    @Autowired
+    private UserRepository userRepository;
 
-        System.out.println("User");
-        System.out.println(userEntity.getName());
+
+    @PostMapping("/")
+    public UserEntity create(@Valid @RequestBody UserEntity userEntity) {
+
+       return this.userRepository.save(userEntity);
 
     }
     
