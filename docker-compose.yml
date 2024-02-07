@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  postgres: 
+    container_name: agnesia_postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=agn_admin
+      - POSTGRES_PASSWORD=Agnadmin1209!
+      - POSTGRES_DB=agnesia
